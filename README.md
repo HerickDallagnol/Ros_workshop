@@ -14,6 +14,11 @@ Aqui é abordado o processamento de imagens no ROS. Onde você aprenderá a capt
 
 Este repositório foi projetado para orientar iniciantes a dar os primeiros passos no ROS, fornecendo uma base sólida para explorar e desenvolver habilidades mais avançadas na área da robótica. Espero que este minicurso seja útil e inspirador em sua jornada de aprendizado!
 
+### Outros Tutoriais desenvolvidos:
+  - [Freenect E Openni](https://github.com/HerickDallagnol/-Oppeni_Tracker)
+  - [Turtlebot3](https://github.com/HerickDallagnol/Tutorial_Turtlebot3)
+
+
 
 
 
