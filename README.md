@@ -8,7 +8,7 @@ Bem-vindo ao repositório dedicado ao minicurso introdutório do ROS (Robotic Op
 
 Aqui é abordado os fundamentos, explicando como criar um pacote no ROS, além de demonstrar como criar um publisher e um subscriber, essenciais para a comunicação entre diferentes componentes de um sistema robótico. Também orientações sobre como criar um arquivo de lançamento (launch file) para gerenciar esses processos de forma eficiente.
 
-## [Pratica 2(Processamento de Imagens)]
+## Pratica 2(Processamento de Imagens)
 
 Aqui é abordado o processamento de imagens no ROS. Onde você aprenderá a capturar imagens, transmiti-las através de tópicos, e realizar o processamento de imagem, demonstrando técnicas para extrair informações valiosas das imagens em ambientes robóticos.
 
