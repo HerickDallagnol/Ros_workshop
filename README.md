@@ -48,6 +48,7 @@ Podemos partir para o vscode utilizando o comando
 ```
 $ code .
 ```
+
 Para visualizar o pacote inteiro dentro do vscode podemos voltar e inicializar
 ```
 $ cd ~/workshop_ws/src/minicurso_package
@@ -63,7 +64,7 @@ $ gedit publisher.py
 ```
 Codigo do publisher.py:
 ```
-#!/usr/bin/env python
+#!/usr/bin/env python3 
 import rospy  #biblioteca para o ros
 from std_msgs.msg import Int32
 
@@ -84,19 +85,22 @@ if __name__ == '__main__':
         pass
 
 ```
+Modificar o *#!/usr/bin/env python3* para determinada versão do python que estiver utilizando.
+
 Utilizamos o chmod +x para dar permissão para o ros executar o codigo.
 ```
 $ chmod +x publisher.py
 ```
+
 Com o codigo do nosso publisher feito, vamos criar o subscriber para receber nossa variavel:
 ```
 $ cd ~/workshop_ws/src/minicurso_package/scripts
 $ gedit publisher.py
-
 ```
+
 Codigo do subscriber.py:
 ```
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 from std_msgs.msg import Int32
 
@@ -114,11 +118,67 @@ if __name__ == '__main__':
     listener()
 
 ```
+Modificar o *#!/usr/bin/env python3* para determinada versão do python que estiver utilizando.
+
 Utilizamos da mesma maneira o chmod +x para dar permissão para o ros executar o codigo.
 ```
 $ chmod +x subscriber.py
 ```
 
+Voltamos para o inicio da nossa Workspace e compilamos nosso pacote:
+```
+$ cd ~/workshop_ws/
+$ catkin_make
+```
+
+Utilizamos o rosrun *nome_do_pacote arquivo.py* para rodar nossos nodos separadamente
+```
+$ rosrun minicurso_package publisher.py
+```
+
+Em outro terminal rodamos nosso subscriber da mesma maneira (lembrando que para cada novo terminal temos que direcionar o ROS com a source)
+```
+$ source devel/setup.bash
+$ rosrun minicurso_package subscriber.py
+```
+
+Utilizando o rostopic list em outro terminal podemos listar os topicos ativos, da mesma forma utilizando o rosnode list para listar os nodos.
+
+##Criando um launcher 
+Quando para executar um projeto grande precisamos rodar diversos nodos, é inviável rodar um por um. Para isso utilizamos um arquivo .launch que nos permite executar todos os nodos de uma vez e sem a necessidade do Master ativo.
+
+Para isso, entramos no nosso pacote e crimos uma pasta chamada launch para melhor organização:
+```
+$ cd ~/workshop_ws/src/minicurso_package
+$ mkdir launch
+$ cd launch
+```
+
+Dentro da mesma, criamos nosso arquivo *Sub_pub.launch*:
+```
+$ gedit Sub_pub.launch
+
+```
+
+Criamos nosso arquivo:
+```
+<launch>
+    <node name="Publisher" pkg="minicurso_package" type="publisher.py" />
+    <node name="Subscriber" pkg="minicurso_package" type="subscriber.py" />
+</launch>
+```
+
+Novamente retornamos para o inicio da nossa Workspace e compilamos nosso pacote:
+```
+$ cd ~/workshop_ws/
+$ catkin_make
+```
+
+Para rodar nosso launch utilizamos *roslaunch nome_do_pacote arquivo.launch* :
+```
+$ roslaunch minicurso_package Sub_pub.launch
+
+```
 
 
 
